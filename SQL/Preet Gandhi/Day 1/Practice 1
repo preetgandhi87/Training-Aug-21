@@ -1,0 +1,14 @@
+USE rxweb_preetgandhi;
+
+
+CREATE TABLE countries 
+(
+	CountryId int PRIMARY KEY identity(1,1),
+	CountryName VARCHAR(20) not null CONSTRAINT coun_name CHECK (CountryName IN ('Italy','India','China')),
+	RegionId int not null
+);
+
+INSERT INTO countries VALUES ('India',10);
+INSERT INTO countries VALUES ('Italy',20), ('China',30);
+
+SELECT * FROM countries;
