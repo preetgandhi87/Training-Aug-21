@@ -1,0 +1,6 @@
+USE rxweb_preetgandhi;
+
+CREATE TABLE job  
+(
+	JobId  int NOT NULL PRIMARY KEY
+);
