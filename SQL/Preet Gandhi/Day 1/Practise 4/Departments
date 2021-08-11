@@ -1,6 +1,0 @@
-USE rxweb_preetgandhi;
-
-CREATE TABLE Departments 
-(
-	DepartmentId int NOT NULL PRIMARY KEY	
-);
