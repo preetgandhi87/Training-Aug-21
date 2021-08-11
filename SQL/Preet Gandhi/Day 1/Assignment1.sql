@@ -13,9 +13,9 @@ CREATE TABLE employee
 
 CREATE TABLE inventory
 (
-	ProId int PRIMARY KEY IDENTITY(1,1),
-	ProName varchar(20) NOT NULL,
-	ProPrice decimal(8,2)
+	CarId int PRIMARY KEY IDENTITY(1,1),
+	CarName varchar(20) NOT NULL,
+	CarPrice decimal(8,2)
 );
 
 CREATE TABLE sales
@@ -23,8 +23,8 @@ CREATE TABLE sales
 	SaleId int PRIMARY KEY IDENTITY(1,1),
 	SaleQuantity int,
 	Emp_Id int CONSTRAINT chk_saleEmp REFERENCES employee(EmpId) ON UPDATE CASCADE,
-	Pro_Id int CONSTRAINT chk_SalePro REFERENCES inventory(ProId) ON UPDATE CASCADE,
-	EmpCommision numeric(5) DEFAULT NULL
+	Car_Id int CONSTRAINT chk_SaleCar REFERENCES inventory(CarId) ON UPDATE CASCADE,
+	EmpCommision numeric(5)
 );
 
 
@@ -32,7 +32,7 @@ CREATE TABLE sales
 INSERT INTO employee VALUES ('Dhaval', 'dhaval@gmail.com', 9375577497, 25000, 25), ('Jay', 'jay@gmail.com', 9463758497, 20000, 27); 
 SELECT * FROM employee;
 
-INSERT INTO inventory VALUES ('car',500000), ('bike',100000);
+INSERT INTO inventory VALUES ('BMW',500000), ('Audi',100000);
 SELECT * FROM inventory;
 
 INSERT INTO sales VALUES (1,7,1,2500), (2,8,2,2500);
