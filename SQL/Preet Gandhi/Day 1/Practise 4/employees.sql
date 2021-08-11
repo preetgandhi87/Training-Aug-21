@@ -12,5 +12,5 @@ CREATE TABLE employees
 	Salary numeric(6) NOT NULL,
 	Commission numeric(4) DEFAULT NULL,
 	Manager_Id int DEFAULT NULL ,
-	Department_Id int NOT NULL FOREIGN KEY REFERENCES Department(department_id),
+	Department_Id int NOT NULL FOREIGN KEY REFERENCES department(department_id),
 );
