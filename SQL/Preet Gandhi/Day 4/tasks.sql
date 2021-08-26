@@ -15,10 +15,10 @@ SELECT DepartmentID, SUM(Salary) AS SalaryPerDept FROM Employees GROUP BY Depart
 SELECT DepartmentID, SUM(Salary) AS SalaryPerDept FROM Employees GROUP BY DepartmentID ORDER BY SalaryPerDept DESC
 
 --5--
-SELECT DepartmentID, MAX(Salary) AS MaxPerDept FROM Employees GROUP BY DepartmentID ORDER BY MAxPerDept ASC
+SELECT DepartmentID, MAX(Salary) AS MaxPerDept FROM Employees GROUP BY DepartmentID ORDER BY MaxPerDept ASC
 
 --6--
-SELECT DepartmentID, MIN(Salary) AS MaxPerDept FROM Employees GROUP BY DepartmentID ORDER BY MAxPerDept ASC
+SELECT DepartmentID, MIN(Salary) AS MinPerDept FROM Employees GROUP BY DepartmentID ORDER BY MinPerDept ASC
 
 --7--
 SELECT DepartmentID, TotalSalary 
