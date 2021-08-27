@@ -1,7 +1,7 @@
-USE rxweb_preetgandhi;
+USE Day1_SQL
 
 CREATE TABLE department 
 (
-	department_id int NOT NULL PRIMARY KEY IDENTITY(1,1),
-	department_name varchar(20) NOT NULL
-);
+	department_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	department_name VARCHAR(20) NOT NULL
+)
