@@ -29,7 +29,7 @@ SELECT * FROM Incentives
 
 ------------------------------------------------------------------------
 
-USE Day3_SQL
+USE Day6_SQL_View
 
 --1--
 CREATE VIEW Que_1
@@ -43,14 +43,17 @@ SELECT * FROM Que_1
 --2--
 CREATE VIEW Que_2
 AS
-SELECT d.DepartmentID,d.DepartmentName,temp.Count FROM Departments AS d FULL OUTER JOIN
-(SELECT COUNT(EmployeeID) AS 'Count' ,DepartmentID FROM Employees GROUP BY DepartmentID)temp
-ON temp.DepartmentID=d.DepartmentID
+SELECT d.DepartmentName, COUNT(e.EmployeeID) AS Count
+FROM   Departments AS d FULL OUTER JOIN 
+Employees AS e ON d.DepartmentID = e.DepartmentID
+GROUP BY d.DepartmentName
 SELECT * FROM Que_2
 
 --3--
-SELECT EmployeeID,JobID,DATEDIFF(dd,StartDate,EndDate) AS 'DateDifference' FROM JobHistory WHERE EmployeeID IN 
-(SELECT EmployeeID FROM Employees WHERE DepartmentID=90)
+CREATE VIEW Que_3
+AS
+SELECT EmployeeID,JobID,DATEDIFF(dd,StartDate,EndDate) AS 'DateDifference' FROM JobHistory WHERE DepartmentID=90
+SELECT * FROM  Que_3
 
 --4--
 CREATE VIEW Que_4
@@ -68,9 +71,7 @@ AS
 SELECT d.DepartmentName,e.FirstName,e.LastName,e.HireDate,e.Salary
 FROM Departments As d INNER JOIN Employees As e
 ON d.ManagerID=e.EmployeeID 
-INNER JOIN (SELECT DATEDIFF(yy,HireDate,GETDATE()) AS 'Experience' ,EmployeeID FROM Employees)temp
-ON e.EmployeeID=temp.EmployeeID
-WHERE temp.Experience>15 
+WHERE DATEDIFF(yy,e.HireDate,GETDATE())>15
 SELECT * FROM Que_5
 
 
