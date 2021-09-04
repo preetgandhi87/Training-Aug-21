@@ -1,3 +1,6 @@
+CREATE DATABASE Day6_SQL
+USE Day6_SQL
+
 CREATE TABLE Branch
 (
 	BName VARCHAR(18) PRIMARY KEY,
@@ -75,7 +78,7 @@ SELECT * FROM Customer
 SELECT * FROM Deposit
 SELECT * FROM Borrow
 
---1--
+--1)List Names of Customers who are Depositors and have Same Branch City as that of SUNIL
 SELECT dep2.CName FROM Deposit AS dep2 
 INNER JOIN Branch AS br2 ON dep2.BName=br2.BName 
 WHERE br2.City =
@@ -83,30 +86,32 @@ WHERE br2.City =
 INNER JOIN Branch AS br1 ON dep1.BName=br1.BName
 WHERE dep1.CName='Sunil')
 
---2--
+--2)List All the Depositors Having Depositors Having Deposit in All the Branches where SUNIL is Having Account
 SELECT dep2.CName FROM Deposit AS dep2 WHERE dep2.BName IN
 (SELECT dep1.BName FROM Deposit AS dep1 WHERE dep1.CName='Sunil') 
  OR dep2.BName IN
 (SELECT brw1.BName FROM Borrow AS brw1 WHERE brw1.CName='Sunil')
 
---3--
+--3)List the Names of Customers Living in the City where the Maximum Number of Depositors are Located
 SELECT dep2.CName FROM Deposit dep2 INNER JOIN Branch AS br2
 ON dep2.BName=br2.BName WHERE br2.City IN (SELECT TOP 2(City) 
 FROM (SELECT City, COUNT(City) AS CityCount
 FROM Branch br1 RIGHT OUTER JOIN Deposit dep1 ON br1.BName = dep1.Bname
 GROUP BY br1.City HAVING COUNT(City)>1)temp)
---4--
+
+--4)List Names of Borrowers Having Deposit Amount Greater than 1000 and Loan Amount Greater than 2000
 SELECT  brw.CName AS 'brw-CName', dep.Amount AS 'dep-Amount', brw.Amount AS 'brw-Amount'
 FROM Borrow AS brw FULL OUTER JOIN Deposit AS dep 
 ON brw.CName=dep.CName WHERE dep.Amount>1000 AND brw.Amount>2000
 
---5--
+--5)List All the Customers Living in NAGPUR and Having the Branch City as MUMBAI or DELHI
 SELECT cus1.CName FROM Customer AS cus1 
 INNER JOIN Deposit AS dep1 ON cus1.CName=dep1.CName 
 INNER JOIN  Branch AS br1 ON dep1.BName=br1.BName 
 WHERE cus1.City = 'Nagpur' AND br1.City IN ('Mumbai','Delhi')
 
 
---6--
-SELECT COUNT( DISTINCT cus1.CName) FROM Customer AS cus1 
+--6): Count the Number of Customers Living in the City where Branch is Located
+SELECT COUNT( DISTINCT cus1.CName) AS 'Customers' FROM Customer AS cus1 
 INNER JOIN Branch AS br1 ON cus1.City=br1.City
+
