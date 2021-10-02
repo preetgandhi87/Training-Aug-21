@@ -31,10 +31,10 @@ Two buttons,  “Calculate” and “Reset”
     <label><b>Enter Second Number: </b></label><input type="number" name="value2" id="value2">
     <br><br>
     <label><b>Operations:</b></label><br>
-    <input type="radio" name="operation" value="+"> + <br>
-    <input type="radio" name="operation" value="-"> - <br>
-    <input type="radio" name="operation" value="*"> * <br>
-    <input type="radio" name="operation" value="/"> / <br><br>
+    <input type="radio" name="operator" value="+"> + <br>
+    <input type="radio" name="operator" value="-"> - <br>
+    <input type="radio" name="operator" value="*"> * <br>
+    <input type="radio" name="operator" value="/"> / <br><br>
     <button type="button" onclick="calculate()">Calculate</button>
     <button type="button" onclick="reset()">Reset</button><br><br>
     <label><b>Result is: </b></label><input type="number" id="result">
@@ -44,21 +44,21 @@ Two buttons,  “Calculate” and “Reset”
         var result = document.getElementById("result");
         var val1 = document.getElementById("value1");
         var val2 = document.getElementById("value2");
-        var operation = document.getElementsByName("operation");
+        var operator = document.getElementsByName("operator");
 
         function calculate() {
-            for (var i = 0; i < operation.length; i++) {
-                if (operation[i].checked) {
-                    if (operation[i].value == "+") {
+            for (var i = 0; i < operator.length; i++) {
+                if (operator[i].checked) {
+                    if (operator[i].value == "+") {
                         result.value = (parseInt(val1.value) + parseInt(val2.value));
                     }
-                    if (operation[i].value == "-") {
+                    if (operator[i].value == "-") {
                         result.value = (parseInt(val1.value) - parseInt(val2.value));
                     }
-                    if (operation[i].value == "*") {
+                    if (operator[i].value == "*") {
                         result.value = (parseInt(val1.value) * parseInt(val2.value));
                     }
-                    if (operation[i].value == "/") {
+                    if (operator[i].value == "/") {
                         result.value = (parseInt(val1.value) / parseInt(val2.value));
                     }
                 }
@@ -69,8 +69,8 @@ Two buttons,  “Calculate” and “Reset”
             val1.value = "";
             val2.value = "";
 
-            for (var i = 0; i < operation.length; i++) {
-                operation[i].checked = false;
+            for (var i = 0; i < operator.length; i++) {
+                operator[i].checked = false;
             }
             result.value = ""
         }
