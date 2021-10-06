@@ -48,7 +48,7 @@ function examStart() {
             else {
                 reject("Error Occured");
             }
-        }, 1000 * 5);
+        }, 1000 * 3600 * 3);
     })
         .then((msg) => {
             var a = document.getElementById("afterExam");
