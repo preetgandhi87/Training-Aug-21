@@ -1,8 +1,20 @@
 //Select City in modal
 $(document).ready(function(){
-  $(".city").click(function(){
+  $(document).on("click",".city",function(){
     var selectCity = $("#selectedCity");
     selectCity.text($(this).attr("value"));
+    console.log($(this).attr("value"))
+  })
+})
+// Other Cities (Modal)
+$(document).ready(function () {
+  $.getJSON("http://127.0.0.1:5500/cities.json", function (result) {
+      console.log(result.cities);
+      $.each(result.cities, function (index, value) {
+          $(".otherCities").append($(`<li class="p-2 m-2 border border-secondary rounded city" data-bs-dismiss="modal"
+          value=${value}>${value}
+      </li>`));
+      })
   })
 })
 
@@ -90,3 +102,4 @@ function loading() {
     $("#loginButton").text("LogOut");
   }
 }
+
