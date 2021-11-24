@@ -41,12 +41,9 @@ addProducts(3,"Dabar Red", 110, 25);
 function Purchase(Product_Name: string, Product_Quantity: number) {
 
     obj.filter((value, index, arr) => {
-        if (value.ProductQuantity > 5) {
+        if (Product_Quantity > 5) {
             if (value.ProductName == Product_Name) {
                 value.ProductQuantity = value.ProductQuantity - Product_Quantity;
-            }
-            else {
-                console.log("Please enter valid name");
             }
         }
         else {

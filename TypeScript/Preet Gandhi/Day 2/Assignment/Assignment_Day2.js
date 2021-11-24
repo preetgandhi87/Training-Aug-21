@@ -9,22 +9,22 @@ var Products = /** @class */ (function () {
     }
     return Products;
 }());
-var obj = [];
 
+var obj = [];
+//Function to add products
 function addProducts(ProductId, ProductName, ProductPrice, ProductQuantity) {
     obj.push({ ProductId: ProductId, ProductName: ProductName, ProductPrice: ProductPrice, ProductQuantity: ProductQuantity });
 }
+//adding products
 addProducts(1, "Colgate", 100, 20);
 addProducts(2, "Close UP", 90, 15);
 addProducts(3, "Dabar Red", 110, 25);
+//function to purchase product
 function Purchase(Product_Name, Product_Quantity) {
     obj.filter(function (value, index, arr) {
-        if (value.ProductQuantity > 5) {
+        if (Product_Quantity > 5) {
             if (value.ProductName == Product_Name) {
                 value.ProductQuantity = value.ProductQuantity - Product_Quantity;
-            }
-            else {
-                console.log("Please enter valid name");
             }
         }
         else {
@@ -32,5 +32,6 @@ function Purchase(Product_Name, Product_Quantity) {
         }
     });
 }
+//calling function to make purchase
 Purchase("Colgate", 9);
 console.log(obj);
