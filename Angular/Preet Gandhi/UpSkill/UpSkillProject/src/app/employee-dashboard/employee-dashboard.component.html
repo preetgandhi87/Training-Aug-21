@@ -1,0 +1,81 @@
+<nav class="navbar navbar-light bg-dark">
+    <div class="container-fluid">
+        <h1 class="text-light">UpSkill Project</h1>
+        <div class="d-flex">
+            <button type="button" (click)="clickAddEmployee()" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success fw-bolder">Add Employee</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email Id</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employeeData">
+            <td>{{emp.id}}</td>
+            <td>{{emp.firstName}}</td>
+            <td>{{emp.lastName}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.mobile}}</td>
+            <td>$ {{emp.salary}}</td>
+            <td>
+                <button (click)="editEmployee(emp)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-warning me-2 fw-bolder">Edit</button>
+                <button (click)="deleteEmploye(emp)" class="btn btn-danger mx-2 fw-bolder">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Employee Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" formControlName="firstName" class="form-control" id="firstName" >
+                  <div *ngIf="firstName?.invalid && firstName?.touched" class="text-danger">First Name is required</div>
+                </div>
+                <div class="mb-3">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" formControlName="lastName" class="form-control" id="lastName">
+                </div>
+                <div *ngIf="lastName?.invalid && lastName?.touched" class="text-danger">Last Name is required</div>
+                <div class="mb-3">
+                    <label for="emailAddress" class="form-label">Email Address</label>
+                    <input type="email" formControlName="email" class="form-control" id="emailAddress">
+                </div>
+                <div *ngIf="email?.invalid && email?.touched" class="text-danger">Email is required</div>
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile Number</label>
+                    <input type="tel" formControlName="mobile" maxlength="10" class="form-control" id="mobile">
+                </div>
+                <div *ngIf="mobile?.invalid && mobile?.touched" class="text-danger">Mobile Number is required</div>
+                <div class="mb-3">
+                    <label for="salary" class="form-label">Salary</label>
+                    <input type="tel" formControlName="salary" maxlength="10" class="form-control" id="salary">
+                </div>
+                <div *ngIf="salary?.invalid && salary?.touched" class="text-danger">Salary is required</div>
+              </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" *ngIf="saveBtn" (click)="postEmployeeDetails()" data-bs-dismiss="modal" class="btn btn-primary">Save</button>
+            <button type="button" *ngIf="updateBtn" (click)="updateEmployeeDetails()" data-bs-dismiss="modal" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
