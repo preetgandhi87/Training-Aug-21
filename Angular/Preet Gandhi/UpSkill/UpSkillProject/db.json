@@ -1,14 +1,6 @@
 {
   "posts": [
     {
-      "id": 2,
-      "firstName": "Jai",
-      "lastName": "Shah",
-      "email": "jai@gmail.com",
-      "mobile": "9392929292",
-      "salary": "12345"
-    },
-    {
       "firstName": "SAF",
       "lastName": "ASEFD",
       "email": "sdf@sfg.com",
@@ -17,12 +9,12 @@
       "id": 3
     },
     {
+      "id": 4,
       "firstName": "ewtqwe",
       "lastName": "wrega",
       "email": "etgg@dgfd.com",
       "mobile": "6345636563",
-      "salary": "635635",
-      "id": 4
+      "salary": "63563"
     },
     {
       "firstName": "AD",
@@ -31,6 +23,70 @@
       "mobile": "5645645355",
       "salary": "567346",
       "id": 5
+    },
+    {
+      "firstName": "Krutik",
+      "lastName": "Vasava",
+      "email": "krutik@gmail.com",
+      "mobile": "9259542394",
+      "salary": "23423",
+      "id": 6
+    },
+    {
+      "firstName": "First Name",
+      "lastName": "LAst NAme",
+      "email": "first@gmail.com",
+      "mobile": "8567345632",
+      "salary": "250000",
+      "id": 7
+    },
+    {
+      "firstName": "Hiren",
+      "lastName": "Pancal",
+      "email": "hiren@gmail.com",
+      "mobile": "8547346235",
+      "salary": "300000",
+      "id": 8
+    },
+    {
+      "firstName": "Jai",
+      "lastName": "Shah",
+      "email": "jai@gmail.com",
+      "mobile": "8573465352",
+      "salary": "3500000",
+      "id": 9
+    },
+    {
+      "firstName": "Jatin",
+      "lastName": "Parekh",
+      "email": "jatin@gmail.com",
+      "mobile": "8457365252",
+      "salary": "65563",
+      "id": 10
+    },
+    {
+      "firstName": "Ruchit",
+      "lastName": "Jain",
+      "email": "ruchit@gmail.com",
+      "mobile": "8462345124",
+      "salary": "346345",
+      "id": 11
+    },
+    {
+      "firstName": "Gaurav",
+      "lastName": "Joshi",
+      "email": "gaurav@gmail.com",
+      "mobile": "8673462342",
+      "salary": "57457",
+      "id": 12
+    },
+    {
+      "firstName": "Devam",
+      "lastName": "Shah",
+      "email": "devam@gamil.com",
+      "mobile": "9567462534",
+      "salary": "436345",
+      "id": 13
     }
   ],
   "comments": [],

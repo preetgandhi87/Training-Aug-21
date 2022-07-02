@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeModel } from './employee-dashboard.model';
 import { ApiService } from '../Shared/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -11,6 +13,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EmployeeDashboardComponent implements OnInit {
 
+  p: number = 1;
+  count: number = 10;
+  // pageSize = 25;
+  // page = 4;
   formValue !: FormGroup;
   employeeObj: EmployeeModel = new EmployeeModel();
   employeeData!: any;
@@ -44,28 +50,28 @@ export class EmployeeDashboardComponent implements OnInit {
     this.employeeObj.mobile = this.formValue.value.mobile;
     this.employeeObj.salary = this.formValue.value.salary;
 
-    this.api.postEmployee(this.employeeObj).subscribe(res => {
+    this.api.postEmployee(this.employeeObj).subscribe((res: any) => {
       console.log(res);
-      this.toastr.success("Employee added successfully");
+      // this.toastr.success("Employee added successfully");
       alert("Employee added successfully");
       this.formValue.reset();
       this.getAllEmployees();
     },
-    err=>{
-      this.toastr.error("Something went wrong");
+      (    err: any)=>{
+      // this.toastr.error("Something went wrong");
       alert("Something went wrong");
     })
   }
 
   getAllEmployees(){
-    this.api.getEmployee().subscribe(res => {
+    this.api.getEmployee().subscribe((res: any) => {
       this.employeeData = res;
     })
   }
 
   deleteEmploye(emp: any){
-    this.api.deleteEmployee(emp.id).subscribe(res => {
-      this.toastr.error("Employee deleted");
+    this.api.deleteEmployee(emp.id).subscribe((res: any) => {
+      // this.toastr.error("Employee deleted");
       alert("Employee deleted");
       this.getAllEmployees();
     })
@@ -88,7 +94,7 @@ export class EmployeeDashboardComponent implements OnInit {
     this.employeeObj.email = this.formValue.value.email;
     this.employeeObj.mobile = this.formValue.value.mobile;
     this.employeeObj.salary = this.formValue.value.salary;
-    this.api.updateEmployee(this.employeeObj,this.employeeObj.id).subscribe(res => {
+    this.api.updateEmployee(this.employeeObj,this.employeeObj.id).subscribe((res: any) => {
        alert("Updated Successfully");
        this.formValue.reset();
        this.getAllEmployees();
